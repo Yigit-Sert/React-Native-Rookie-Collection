@@ -26,5 +26,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 70,
     color: "darkblue",
+    fontFamily: 'AmaticBold',
   },
 });
