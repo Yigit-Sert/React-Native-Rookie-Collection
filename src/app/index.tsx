@@ -6,42 +6,44 @@ import {
   Text,
   View,
 } from "react-native";
-import DayListItem from "./src/components/core/DayListItem";
+import ProjectListItem from "../components/core/ProjectListItem";
 import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
-import { AmaticSC_400Regular, AmaticSC_700Bold } from "@expo-google-fonts/amatic-sc";
-import * as SplashScreen from 'expo-splash-screen';
+import {
+  AmaticSC_400Regular,
+  AmaticSC_700Bold,
+} from "@expo-google-fonts/amatic-sc";
+import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
 SplashScreen.preventAutoHideAsync();
 
-const days = [...Array(24)].map((val, index) => index + 1);
+const projects = [...Array(30)].map((val, index) => index + 1);
 
-export default function App() {
+export default function HomeScreen() {
   const [fontsLoaded, fontError] = useFonts({
     Inter: Inter_900Black,
     Amatic: AmaticSC_400Regular,
     AmaticBold: AmaticSC_700Bold,
   });
 
-  useEffect(()=>{
-    
-      if (fontsLoaded || fontError) {
-        SplashScreen.hideAsync();
-      }
+  useEffect(() => {
+    if (fontsLoaded || fontError) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
 
-  }, [fontsLoaded, fontError])
-
-      if (!fontsLoaded && !fontError) {
-        return null;
-      }
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+  
   return (
     <View style={styles.container}>
       <FlatList
-        data={days}
+        data={projects}
         contentContainerStyle={styles.content}
         columnWrapperStyle={styles.column}
         numColumns={3}
-        renderItem={({ item }) => <DayListItem day={item} />}
+        renderItem={({ item }) => <ProjectListItem project={item} />}
       />
       <StatusBar style="auto" />
     </View>
