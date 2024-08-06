@@ -9,13 +9,9 @@ import {
 } from "react-native-gesture-handler";
 import Animated, {
   FadeIn,
-  FadeInLeft,
   FadeOut,
-  SlideInDown,
-  SlideInLeft,
   SlideInRight,
   SlideOutLeft,
-  SlideOutRight,
 } from "react-native-reanimated";
 
 const onboardingSteps = [
