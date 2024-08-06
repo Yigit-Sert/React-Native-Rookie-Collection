@@ -7,6 +7,16 @@ import {
   Gesture,
   Directions,
 } from "react-native-gesture-handler";
+import Animated, {
+  FadeIn,
+  FadeInLeft,
+  FadeOut,
+  SlideInDown,
+  SlideInLeft,
+  SlideInRight,
+  SlideOutLeft,
+  SlideOutRight,
+} from "react-native-reanimated";
 
 const onboardingSteps = [
   {
@@ -59,7 +69,7 @@ export default function OnboardingScreen() {
     if (step > 0) {
       setStep(step - 1);
     } else {
-      router.back();
+      onSkip();
     }
   };
 
@@ -93,15 +103,35 @@ export default function OnboardingScreen() {
             ))}
           </View>
 
-          <FontAwesome5
-            style={styles.image}
-            name={data.icon}
-            size={100}
-            color="#cef202"
-          />
+          <Animated.View
+            entering={FadeIn}
+            exiting={FadeOut}
+            key={step}
+            style={styles.animatedImageView}
+          >
+            <FontAwesome5
+              style={styles.image}
+              name={data.icon}
+              size={100}
+              color="#cef202"
+            />
+          </Animated.View>
+
           <View style={styles.footer}>
-            <Text style={styles.title}>{data.title}</Text>
-            <Text style={styles.description}>{data.description}</Text>
+            <Animated.View
+              entering={SlideInRight}
+              exiting={SlideOutLeft}
+              key={step}
+            >
+              <Text style={styles.title}>{data.title}</Text>
+              <Animated.Text
+                entering={SlideInRight.delay(100)}
+                key={`description-${step}`}
+                style={styles.description}
+              >
+                {data.description}
+              </Animated.Text>
+            </Animated.View>
 
             <View style={styles.buttonsRow}>
               <Text onPress={onSkip} style={styles.buttonText}>
@@ -125,6 +155,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#15141a",
     padding: 20,
+  },
+  animatedImageView: {
+    flex: 1,
+    justifyContent: "center",
   },
   image: {
     alignSelf: "center",
