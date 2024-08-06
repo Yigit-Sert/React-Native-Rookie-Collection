@@ -1,12 +1,12 @@
 import React from "react";
-import { Text, View, StyleSheet, SafeAreaView, ScrollView, Button } from "react-native";
+import { Text, StyleSheet, SafeAreaView, ScrollView, Button } from "react-native";
 import { Link, Stack } from "expo-router";
 
 export default function ExplanationScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Stack.Screen
-        options={{ headerShown: true, title: "Component Explanation" }}
+        options={{ headerShown: true, title: "Animated Onboarding Screen" }}
       />
       
       <ScrollView contentContainerStyle={styles.contentContainer}>
