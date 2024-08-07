@@ -2,9 +2,6 @@ import { View } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { useRef } from 'react';
 import Animated, {
-  FadeIn,
-  FadeOut,
-  ZoomIn,
   ZoomOut,
 } from 'react-native-reanimated';
 

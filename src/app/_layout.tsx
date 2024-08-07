@@ -14,7 +14,7 @@ import * as SplashScreen from "expo-splash-screen";
 import AnimatedSplashScreen from "@/components/project4/AnimatedSplashScreen";
 import Animated, { FadeIn } from "react-native-reanimated";
 
-// SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync(); // Comment this to apply the customized splash screen
 
 export default function RootLayout() {
   const [appReady, setAppReady] = useState(false);
@@ -28,14 +28,16 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (fontsLoaded || fontError) {
-      // SplashScreen.hideAsync();
-      setAppReady(true);
+      SplashScreen.hideAsync(); // Comment this to apply the customized splash screen
+      // setAppReady(true); // Uncomment the following code to show the animated splash screen
     }
   }, [fontsLoaded, fontError]);
 
   const showAnimatedSplash = !appReady || !splashAnimationComplete;
 
-  if (showAnimatedSplash) {
+  // Show the animated splash screen until the app is ready
+  // Uncomment the following code to show the animated splash screen
+     /* if (showAnimatedSplash) {
     return (
       <AnimatedSplashScreen
         onAnimationFinish={(isCancelled) => {
@@ -45,10 +47,14 @@ export default function RootLayout() {
         }}
       />
     );
-  }
+  } */
+
+    if (!fontsLoaded || fontError) {
+    return null;
+    }
 
   return (
-    <GestureHandlerRootView style={{flex:1}}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <Animated.View style={{ flex: 1 }} entering={FadeIn}>
         <Stack screenOptions={{}}>
           <Stack.Screen
