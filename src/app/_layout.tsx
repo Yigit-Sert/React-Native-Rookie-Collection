@@ -1,21 +1,24 @@
 import {
   useFonts,
-  Inter_900Black,
   Inter_600SemiBold,
   Inter_400Regular,
 } from "@expo-google-fonts/inter";
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   AmaticSC_400Regular,
   AmaticSC_700Bold,
 } from "@expo-google-fonts/amatic-sc";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
+import AnimatedSplashScreen from "@/components/project4/AnimatedSplashScreen";
+import Animated, { FadeIn } from "react-native-reanimated";
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [appReady, setAppReady] = useState(false);
+  const [splashAnimationComplete, setSplashAnimationComplete] = useState(false);
   const [fontsLoaded, fontError] = useFonts({
     Inter: Inter_400Regular,
     InterSemi: Inter_600SemiBold,
@@ -25,22 +28,35 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (fontsLoaded || fontError) {
-      SplashScreen.hideAsync();
+      // SplashScreen.hideAsync();
+      setAppReady(true);
     }
   }, [fontsLoaded, fontError]);
 
-  if (!fontsLoaded && !fontError) {
-    return null;
+  const showAnimatedSplash = !appReady || !splashAnimationComplete;
+
+  if (showAnimatedSplash) {
+    return (
+      <AnimatedSplashScreen
+        onAnimationFinish={(isCancelled) => {
+          if (!isCancelled) {
+            setSplashAnimationComplete(true);
+          }
+        }}
+      />
+    );
   }
 
   return (
-    <GestureHandlerRootView>
-      <Stack screenOptions={{}}>
-        <Stack.Screen
-          name="index"
-          options={{ title: "React Native Rookie Collection" }}
-        />
-      </Stack>
+    <GestureHandlerRootView style={{flex:1}}>
+      <Animated.View style={{ flex: 1 }} entering={FadeIn}>
+        <Stack screenOptions={{}}>
+          <Stack.Screen
+            name="index"
+            options={{ title: "React Native Rookie Collection" }}
+          />
+        </Stack>
+      </Animated.View>
     </GestureHandlerRootView>
   );
 }
