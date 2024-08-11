@@ -14,27 +14,11 @@ This repository isn't just a single project—it's a series of interconnected mi
 
 ## 🗂️ Projects in This Collection
 
-1. **Project 1: [Project Title]**
-   - **Description:** A brief overview of the project's focus.
-   - **Learning Goals:** Key concepts or technologies I'm exploring.
+1. **Project 1: [Readme]**
+   - **Description:** This project is the first list element of the main screen and the main description of the entire project.
+   - **Learning Goals:** Key concepts and technologies I'm exploring.
 
-2. **Project 2: [Project Title]**
-   - **Description:** A brief overview of the project's focus.
-   - **Learning Goals:** Key concepts or technologies I'm exploring.
-
-3. **Project 3: [Project Title]**
-   - **Description:** A brief overview of the project's focus.
-   - **Learning Goals:** Key concepts or technologies I'm exploring.
-
-4. **Project 4: [Project Title]**
-   - **Description:** A brief overview of the project's focus.
-   - **Learning Goals:** Key concepts or technologies I'm exploring.
-
-5. **Project 5: [Project Title]**
-   - **Description:** A brief overview of the project's focus.
-   - **Learning Goals:** Key concepts or technologies I'm exploring.
-
-(Continue listing all included projects.)
+(The projects will be added during the development & learning process.)
 
 ## 🚀 Getting Started
 
