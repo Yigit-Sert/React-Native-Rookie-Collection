@@ -2,10 +2,16 @@ import TinderCard from '@components/project6/TinderCard';
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 import { useSharedValue } from 'react-native-reanimated';
-import { users } from './tinder';
+import { users  } from './tinder';
 
 export const TinderScreen = () => {
   const activeIndex = useSharedValue(0);
+
+  type UserType = {
+    id: number;
+    image: string;
+    name: string;
+  };  
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
