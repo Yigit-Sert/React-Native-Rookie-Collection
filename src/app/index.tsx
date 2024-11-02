@@ -12,7 +12,7 @@ export default function HomeScreen() {
         contentContainerStyle={styles.content}
         columnWrapperStyle={styles.column}
         numColumns={3}
-        renderItem={({ item }) => <ProjectListItem project={item} />}
+        renderItem={({ item }) => <ProjectListItem project={item} />} 
       />
       <StatusBar style="auto" />
     </View>
